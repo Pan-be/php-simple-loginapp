@@ -1,18 +1,4 @@
-<?php
-if (isset($_POST['submit'])) {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-   $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
-
-   if($connection) {
-    echo "connected";
-   }else {
-    die('error');
-   }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +13,7 @@ if (isset($_POST['submit'])) {
 
 <div class="container">
     <div class="col-sm-6">
-        <form action="login.php" method="post">
+        <form action="login_create.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control">
