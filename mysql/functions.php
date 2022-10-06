@@ -1,5 +1,41 @@
 <?php include "db.php";
 
+function create () {
+
+if (isset($_POST['submit'])) {
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+   $query = "INSERT INTO users(username, password) VALUES ('$username', '$password')";
+
+   $results = mysqli_query($connection, $query);
+
+   if (!$results) {
+       die('Query failed');
+   } else {
+    echo "Record created";
+   }
+
+}
+       
+}
+
+function readRows () {
+    global $connection;
+    $query = "SELECT * FROM users";
+
+    $results = mysqli_query($connection, $query);
+ 
+    if (!$results) {
+        die('Query failed');
+    }
+    while($row = mysqli_fetch_assoc($results)) {
+        print_r($row);
+           }
+ 
+}
+
 function showAllData() {
     global $connection;
     $query = "SELECT * FROM users";
@@ -17,6 +53,7 @@ function showAllData() {
 }
 
 function updateTable() {
+    if(isset($_POST['submit'])) {
     global $connection;
 
     $username = $_POST['username'];
@@ -32,12 +69,15 @@ function updateTable() {
 
     if (!$result) {
         die('Query failed' . mysqli_error());
+    } else {
+        echo "record updated";
     }
-
+    }
 
 }
 
 function deleteRows() {
+    if(isset($_POST['submit'])) {
     global $connection;
 
     $username = $_POST['username'];
@@ -51,7 +91,9 @@ function deleteRows() {
 
     if (!$result) {
         die('Query failed' . mysqli_error());
+    } else {
+        echo 'record deleted';
     }
-
+    }
 
 }

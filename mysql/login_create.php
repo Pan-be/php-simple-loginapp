@@ -1,34 +1,13 @@
 <?php include "db.php";
-if (isset($_POST['submit'])) {
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-   $query = "INSERT INTO users(username, password) VALUES ('$username', '$password')";
-
-   $results = mysqli_query($connection, $query);
-
-   if (!$results) {
-       die('Query failed');
-   }
-
-}
+include "functions.php";
+create();
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <title>login</title>
-</head>
-<body>
+<?php include "includes/header.php"?>
 
 <div class="container">
     <div class="col-sm-6">
+        <h1 class="text-center">Create</h1>
         <form action="login_create.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -38,10 +17,7 @@ if (isset($_POST['submit'])) {
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+            <input class="btn btn-primary" type="submit" name="submit" value="Create">
         </form>
     </div>
-</div>
- 
-</body>
-</html>
+    <?php inlcude "includes/footer.php"?>
